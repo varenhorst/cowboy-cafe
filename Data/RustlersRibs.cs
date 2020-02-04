@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CowboyCafe.Data
 {
-    class RustlersRibs
+    public class RustlersRibs
     {
         /// <summary>
         /// The price of the ribs
@@ -25,6 +25,15 @@ namespace CowboyCafe.Data
             get
             {
                 return 894;
+            }
+        }
+
+        public List<string> SpecialInstructions
+        {
+            get
+            {
+                var instructions = new List<string>();
+                return instructions;
             }
         }
     }

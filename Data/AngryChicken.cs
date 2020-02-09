@@ -1,15 +1,21 @@
-﻿using System;
+﻿/*
+ Author: Alex Varenhorst
+ Modified: 2/8/2020 9:50pm
+ Class: CIS-400 Object Oriented Design
+ Description: Class for Angry Chicken Entree.
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CowboyCafe.Data
 {
-    public class AngryChicken
+    public class AngryChicken : Entree
     {
         /// <summary>
         /// The price of the Angry Chicken
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -20,7 +26,7 @@ namespace CowboyCafe.Data
         /// <summary>
         /// The calories of the Angry Chicken
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -51,7 +57,7 @@ namespace CowboyCafe.Data
         /// <summary>
         /// The special instructions for the Angry chicken
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

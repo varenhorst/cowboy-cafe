@@ -2,7 +2,7 @@
  Author: Alex Varenhorst
  Modified: 2/8/2020 9:50pm
  Class: CIS-400 Object Oriented Design
- Description: abstract base class for each side. Is inherited by all sides.
+ Description: Abstract base class for Entree's. Inherited by all entree classes
  */
 using System;
 using System.Collections.Generic;
@@ -10,18 +10,10 @@ using System.Text;
 
 namespace CowboyCafe.Data
 {
-    /// <summary>
-    /// A base class representing a side
-    /// </summary>
-    public abstract class Side
+    public abstract class Entree
     {
         /// <summary>
-        /// Gets the size of the entree
-        /// </summary>
-        public virtual Size Size { get; set; }
-
-        /// <summary>
-        /// Gets the price of the side
+        /// Gets the price of the entree
         /// </summary>
         public abstract double Price { get; }
 
@@ -29,5 +21,10 @@ namespace CowboyCafe.Data
         /// Gets the calories of the entree
         /// </summary>
         public abstract uint Calories { get; }
+
+        /// <summary>
+        /// Gets the speial instructions for the entree.
+        /// </summary>
+        public abstract List<string> SpecialInstructions { get; }
     }
 }

@@ -1,16 +1,22 @@
-﻿using System;
+﻿/*
+ Author: Alex Varenhorst
+ Modified: 2/8/2020 9:50pm
+ Class: CIS-400 Object Oriented Design
+ Description: Class for the trailburger entree.
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CowboyCafe.Data
 {
-    public class TrailBurger
+    public class TrailBurger : Entree
     {
 
         /// <summary>
-        /// The price of the Angry Chicken
+        /// The price of the trail burger
         /// </summary>
-        public double Price
+        public override double Price
         {
             get
             {
@@ -19,9 +25,9 @@ namespace CowboyCafe.Data
         }
 
         /// <summary>
-        /// The calories of the Angry Chicken
+        /// The calories of the trail burger
         /// </summary>
-        public uint Calories
+        public override uint Calories
         {
             get
             {
@@ -80,9 +86,9 @@ namespace CowboyCafe.Data
         }
 
         /// <summary>
-        /// The special instructions for the trailburger
+        /// The special instructions for the angry chicken
         /// </summary>
-        public List<string> SpecialInstructions
+        public override List<string> SpecialInstructions
         {
             get
             {

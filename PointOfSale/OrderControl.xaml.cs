@@ -27,7 +27,7 @@ namespace PointOfSale
 
         void OnAddTrailBurgerButtonClicked(object sender, RoutedEventArgs e)
         {
-            OrderListView.Items.Add(new TrailBurger());
+            OrderListView.Items.Add(new TrailBurger().ToString());
         }
 
        /* void OnCowpokeChiliButtonClicked(object sender, RoutedEventArgs e)

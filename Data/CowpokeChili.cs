@@ -93,6 +93,15 @@ namespace CowboyCafe.Data
                 return instructions;
             }
         }
+
+        /// <summary>
+        /// Retuns the string representation of the food item here.
+        /// </summary>
+        /// <returns>A string of the food item</returns>
+        public override string ToString()
+        {
+            return "Cowpoke Chili";
+        }
     }
 }
 

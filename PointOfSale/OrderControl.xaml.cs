@@ -23,6 +23,13 @@ namespace PointOfSale
         {
             InitializeComponent();
             AddTrailBurgerButton.Click += OnAddTrailBurgerButtonClicked;
+            AddAngryChickenButton.Click += OnAddAngryChickenClicked;
+            AddDakotaDoubleBurgerButton.Click += OnAddDakotaDoubleBurgerClicked;
+            AddRustlersRibsButton.Click += OnAddRustlersRibsClicked;
+            AddCowpokeChiliButton.Click += OnAddCowpokeChiliClicked;
+            AddPecosPulledPorkButton.Click += OnAddPecosPulledPorkClicked;
+            AddTexasTripleBurgerButton.Click += OnAddTexasTripleBurgerClicked;
+
         }
 
         void OnAddTrailBurgerButtonClicked(object sender, RoutedEventArgs e)
@@ -30,9 +37,34 @@ namespace PointOfSale
             OrderListView.Items.Add(new TrailBurger().ToString());
         }
 
-       /* void OnCowpokeChiliButtonClicked(object sender, RoutedEventArgs e)
+        void OnAddAngryChickenClicked(object sender, RoutedEventArgs e)
         {
-            OrderListView.Items.Add(new CowpokeChili());
-        }*/
+            OrderListView.Items.Add(new AngryChicken().ToString());
+        }
+
+        void OnAddDakotaDoubleBurgerClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new DakotaDoubleBurger().ToString());
+        }
+
+        void OnAddRustlersRibsClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new RustlersRibs().ToString());
+        }
+
+        void OnAddCowpokeChiliClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new CowpokeChili().ToString());
+        }
+
+        void OnAddPecosPulledPorkClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new PecosPulledPork().ToString());
+        }
+
+        void OnAddTexasTripleBurgerClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new TexasTripleBurger().ToString());
+        }
     }
 }

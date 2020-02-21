@@ -9,10 +9,10 @@
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Height" Value="50px"></Setter>
-            <Setter Property="FontSize" Value="20px"></Setter>
+            <Setter Property="FontSize" Value="18px"></Setter>
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="30px"></Setter>
+            <Setter Property="FontSize" Value="25px"></Setter>
             <Setter Property="TextAlignment" Value="Center"></Setter>
         </Style>
     </UserControl.Resources>
@@ -27,12 +27,13 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock>Entree</TextBlock>
-            <Button>CowPoke Chili</Button>
+            <Button Name = "AddCowpokeChiliButton">CowPoke Chili</Button>
             <Button Name = "AddTrailBurgerButton">Trailburger</Button>
-            <Button>Angry Chicken</Button>
-            <Button>Pecos Pulled Pork</Button>
-            <Button>Dakota Double Burger</Button>
-            <Button>Texas Triple Burger</Button>
+            <Button Name = "AddAngryChickenButton">Angry Chicken</Button>
+            <Button Name = "AddPecosPulledPorkButton">Pecos Pulled Pork</Button>
+            <Button Name = "AddRustlersRibsButton">Rustlers Ribs</Button>
+            <Button Name = "AddDakotaDoubleBurgerButton">Dakota Double Burger</Button>
+            <Button Name = "AddTexasTripleBurgerButton">Texas Triple Burger</Button>
         </StackPanel>
 
         <StackPanel Grid.Column="1">

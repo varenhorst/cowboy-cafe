@@ -85,5 +85,38 @@ namespace CowboyCafe.Data
             }
         }
 
+        /// <summary>
+        /// Returns the human-readable string describing the order of jerked soda.
+        /// </summary>
+        public override string ToString()
+        {
+            var size = this.Size.ToString();
+            var flavor = "";
+
+            switch (this.Flavor) 
+            {
+                case SodaFlavor.CreamSoda:
+                    flavor = "Cream Soda";
+                    break;
+                case SodaFlavor.BirchBeer:
+                    flavor = "Birch Beer";
+                    break;
+                case SodaFlavor.OrangeSoda:
+                    flavor = "Orange Soda";
+                    break;
+                case SodaFlavor.RootBeer:
+                    flavor = "Root Beer";
+                    break;
+                case SodaFlavor.Sarsparilla:
+                    flavor = "Sarsparilla";
+                    break;
+                default:
+                    flavor = "Cream Soda";
+                    break;
+            }
+
+            return size + " " + flavor + " Jerked Soda";
+        }
+
     }
 }

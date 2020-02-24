@@ -79,5 +79,25 @@ namespace CowboyCafe.Data
                 return instructions;
             }
         }
+
+        /// <summary>
+        /// Returns the human-readable string describing the order of water.
+        /// </summary>
+        public override string ToString()
+        {
+            switch (this.Size)
+            {
+                case Size.Small:
+                    return "Small Water";
+
+                case Size.Medium:
+                    return "Medium Water";
+
+                case Size.Large:
+                    return "Large Water";
+                default:
+                    return "Small Water";
+            }
+        }
     }
 }

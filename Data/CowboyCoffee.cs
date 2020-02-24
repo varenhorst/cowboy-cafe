@@ -98,5 +98,21 @@ namespace CowboyCafe.Data
                 return instructions;
             }
         }
+
+        /// <summary>
+        /// Returns the human-readable string describing the order of cowboy coffee
+        /// </summary>
+        public override string ToString()
+        {
+            var size = this.Size.ToString();
+           
+            if(decaf)
+            {
+                return size + " Decaf Cowboy Coffee";
+            }
+
+            return size + " Cowboy Coffee";
+           
+        }
     }
 }

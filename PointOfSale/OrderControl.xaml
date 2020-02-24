@@ -5,16 +5,19 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PointOfSale"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="500" d:DesignWidth="800">
+    
     <UserControl.Resources>
         <Style TargetType="Button">
-            <Setter Property="Height" Value="50px"></Setter>
-            <Setter Property="FontSize" Value="18px"></Setter>
+            <Setter Property="Height" Value="50px"/>
+            <Setter Property="FontSize" Value="18px"/>
+            <Setter Property="Margin" Value="5,5,0,0"/>
         </Style>
         <Style TargetType="TextBlock">
-            <Setter Property="FontSize" Value="25px"></Setter>
-            <Setter Property="TextAlignment" Value="Center"></Setter>
+            <Setter Property="FontSize" Value="25px"/>
+            <Setter Property="TextAlignment" Value="Center"/>
         </Style>
+        
     </UserControl.Resources>
     
     <Grid>
@@ -27,33 +30,34 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock>Entree</TextBlock>
-            <Button Name = "AddCowpokeChiliButton">CowPoke Chili</Button>
-            <Button Name = "AddTrailBurgerButton">Trailburger</Button>
-            <Button Name = "AddAngryChickenButton">Angry Chicken</Button>
-            <Button Name = "AddPecosPulledPorkButton">Pecos Pulled Pork</Button>
-            <Button Name = "AddRustlersRibsButton">Rustlers Ribs</Button>
-            <Button Name = "AddDakotaDoubleBurgerButton">Dakota Double Burger</Button>
-            <Button Name = "AddTexasTripleBurgerButton">Texas Triple Burger</Button>
+            <Button Name="AddCowpokeChiliButton">CowPoke Chili</Button>
+            <Button Name="AddTrailBurgerButton">Trailburger</Button>
+            <Button Name="AddAngryChickenButton">Angry Chicken</Button>
+            <Button Name="AddPecosPulledPorkButton">Pecos Pulled Pork</Button>
+            <Button Name="AddRustlersRibsButton">Rustler's Ribs</Button>
+            <Button Name="AddDakotaDoubleBurgerButton">Dakota Double Burger</Button>
+            <Button Name="AddTexasTripleBurgerButton">Texas Triple Burger</Button>
         </StackPanel>
 
         <StackPanel Grid.Column="1">
             <TextBlock>Sides</TextBlock>
-            <Button>Chili Cheese Fries</Button>
-            <Button>Corn Dodgers</Button>
-            <Button>Pan De Campo</Button>
-            <Button>Baked Beans</Button>
+            <Button Name="AddChiliCheeseFries">Chili Cheese Fries</Button>
+            <Button Name="AddCornDodgers">Corn Dodgers</Button>
+            <Button Name="AddPanDeCampo">Pan De Campo</Button>
+            <Button Name="AddBakedBeans">Baked Beans</Button>
         </StackPanel>
 
         <StackPanel Grid.Column="2">
             <TextBlock>Drinks</TextBlock>
-            <Button>Jerked Soda</Button>
-            <Button>Texas Tea</Button>
-            <Button>Cowbow Coffee</Button>
-            <Button>Water</Button>
+            <Button Name="AddJerkedSoda">Jerked Soda</Button>
+            <Button Name="AddTexasTea">Texas Tea</Button>
+            <Button Name="AddCowboyCoffee">Cowboy Coffee</Button>
+            <Button Name="AddWater">Water</Button>
         </StackPanel>
 
         <StackPanel Grid.Column="3">
-            <ListView Name ="OrderListView"></ListView>
+            <TextBlock>Order</TextBlock>
+            <ListView Name ="OrderListView" Margin="5,5,5,0" Height="400"></ListView>
         </StackPanel>
     </Grid>
 </UserControl>

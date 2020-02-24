@@ -52,5 +52,15 @@ namespace CowboyCafe.Data
                 }
             }
         }
+
+        /// <summary>
+        /// Returns the human-readable string describing the order of chili cheese fries.
+        /// </summary>
+        public override string ToString()
+        {
+            var size = this.Size.ToString();
+
+            return size + " Chili Cheese Fries";
+        }
     }
 }

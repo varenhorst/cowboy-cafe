@@ -52,5 +52,15 @@ namespace CowboyCafe.Data
                 }
             }
         }
+
+        /// <summary>
+        /// Returns the human-readable string describing the order of baked beans.
+        /// </summary>
+        public override string ToString()
+        {
+            var size = this.Size.ToString();
+
+            return size + " Baked Beans";
+        }
     }
 }

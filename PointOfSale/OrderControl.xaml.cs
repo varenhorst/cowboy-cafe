@@ -29,7 +29,14 @@ namespace PointOfSale
             AddCowpokeChiliButton.Click += OnAddCowpokeChiliClicked;
             AddPecosPulledPorkButton.Click += OnAddPecosPulledPorkClicked;
             AddTexasTripleBurgerButton.Click += OnAddTexasTripleBurgerClicked;
-
+            AddJerkedSoda.Click += OnAddJerkedSodaClicked;
+            AddTexasTea.Click += OnAddTexasTeaClicked;
+            AddWater.Click += OnAddWaterClicked;
+            AddCowboyCoffee.Click += OnAddCowboyCoffeeClicked;
+            AddChiliCheeseFries.Click += OnAddChiliCheeseFries;
+            AddCornDodgers.Click += OnAddCornDodgersClicked;
+            AddPanDeCampo.Click += OnAddPanDeCampoClicked;
+            AddBakedBeans.Click += OnAddBakedBeansClicked;
         }
 
         void OnAddTrailBurgerButtonClicked(object sender, RoutedEventArgs e)
@@ -65,6 +72,43 @@ namespace PointOfSale
         void OnAddTexasTripleBurgerClicked(object sender, RoutedEventArgs e)
         {
             OrderListView.Items.Add(new TexasTripleBurger().ToString());
+        }
+
+        void OnAddJerkedSodaClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new JerkedSoda().ToString());
+        }
+
+        void OnAddWaterClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new Water().ToString());
+        }
+
+        void OnAddCowboyCoffeeClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new CowboyCoffee().ToString());
+        }
+
+        void OnAddTexasTeaClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new TexasTea().ToString());
+        }
+
+        void OnAddChiliCheeseFries(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new ChiliCheeseFries().ToString());
+        }
+        void OnAddCornDodgersClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new CornDodgers().ToString());
+        }
+        void OnAddPanDeCampoClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new PanDeCampo().ToString());
+        }
+        void OnAddBakedBeansClicked(object sender, RoutedEventArgs e)
+        {
+            OrderListView.Items.Add(new BakedBeans().ToString());
         }
     }
 }

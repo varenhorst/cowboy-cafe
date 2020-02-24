@@ -101,5 +101,20 @@ namespace CowboyCafe.Data
                 return instructions;
             }
         }
+
+        /// <summary>
+        /// Returns the human-readable string describing the order of Texas Tea.
+        /// </summary>
+        public override string ToString()
+        {
+            var size = this.Size.ToString();
+
+            if(sweet)
+            {
+                return size + " Texas Sweet Tea";
+            }
+
+            return size + " Texas Plain Tea"; 
+        }
     }
 }

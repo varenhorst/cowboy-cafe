@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ Author: Alex Varenhorst
+ Modified: 3/3/2020 9:50pm
+ Class: CIS-400 Object Oriented Design
+ Description: The logic that drives the OrderControl
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -22,93 +28,26 @@ namespace PointOfSale
         public OrderControl()
         {
             InitializeComponent();
-            AddTrailBurgerButton.Click += OnAddTrailBurgerButtonClicked;
-            AddAngryChickenButton.Click += OnAddAngryChickenClicked;
-            AddDakotaDoubleBurgerButton.Click += OnAddDakotaDoubleBurgerClicked;
-            AddRustlersRibsButton.Click += OnAddRustlersRibsClicked;
-            AddCowpokeChiliButton.Click += OnAddCowpokeChiliClicked;
-            AddPecosPulledPorkButton.Click += OnAddPecosPulledPorkClicked;
-            AddTexasTripleBurgerButton.Click += OnAddTexasTripleBurgerClicked;
-            AddJerkedSoda.Click += OnAddJerkedSodaClicked;
-            AddTexasTea.Click += OnAddTexasTeaClicked;
-            AddWater.Click += OnAddWaterClicked;
-            AddCowboyCoffee.Click += OnAddCowboyCoffeeClicked;
-            AddChiliCheeseFries.Click += OnAddChiliCheeseFries;
-            AddCornDodgers.Click += OnAddCornDodgersClicked;
-            AddPanDeCampo.Click += OnAddPanDeCampoClicked;
-            AddBakedBeans.Click += OnAddBakedBeansClicked;
+            //initialize the data to a new order.
+            var data = new Order();
+
+            DataContext = data;
+
+            //add functions to the buttons.
+            CancelOrder.Click += onRemoveOrder;
+            CompleteOrder.Click += onAddOrder;
         }
 
-        void OnAddTrailBurgerButtonClicked(object sender, RoutedEventArgs e)
+        //make the datacontext a new order.
+        void onRemoveOrder(object sender, RoutedEventArgs e)
         {
-            OrderListView.Items.Add(new TrailBurger().ToString());
+            DataContext = new Order();
         }
 
-        void OnAddAngryChickenClicked(object sender, RoutedEventArgs e)
+        //make the datacontext a new order.
+        void onAddOrder(object sender, RoutedEventArgs e)
         {
-            OrderListView.Items.Add(new AngryChicken().ToString());
-        }
-
-        void OnAddDakotaDoubleBurgerClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new DakotaDoubleBurger().ToString());
-        }
-
-        void OnAddRustlersRibsClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new RustlersRibs().ToString());
-        }
-
-        void OnAddCowpokeChiliClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new CowpokeChili().ToString());
-        }
-
-        void OnAddPecosPulledPorkClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new PecosPulledPork().ToString());
-        }
-
-        void OnAddTexasTripleBurgerClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new TexasTripleBurger().ToString());
-        }
-
-        void OnAddJerkedSodaClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new JerkedSoda().ToString());
-        }
-
-        void OnAddWaterClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new Water().ToString());
-        }
-
-        void OnAddCowboyCoffeeClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new CowboyCoffee().ToString());
-        }
-
-        void OnAddTexasTeaClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new TexasTea().ToString());
-        }
-
-        void OnAddChiliCheeseFries(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new ChiliCheeseFries().ToString());
-        }
-        void OnAddCornDodgersClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new CornDodgers().ToString());
-        }
-        void OnAddPanDeCampoClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new PanDeCampo().ToString());
-        }
-        void OnAddBakedBeansClicked(object sender, RoutedEventArgs e)
-        {
-            OrderListView.Items.Add(new BakedBeans().ToString());
+            DataContext = new Order();
         }
     }
 }

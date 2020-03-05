@@ -52,7 +52,7 @@ namespace CowboyCafe.DataTests
                     Price = price
                 });
             }
-            Assert.Equal(total, order.SubTotal);
+            Assert.Equal(total, order.Subtotal);
         }
 
         [Fact]

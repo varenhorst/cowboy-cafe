@@ -10,7 +10,7 @@ using System.Text;
 
 namespace CowboyCafe.Data
 {
-    public class TrailBurger : Entree
+    public class TrailBurger : Entree,IOrderItem
     {
         /// <summary>
         /// The price of the trail burger

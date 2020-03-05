@@ -54,6 +54,8 @@ namespace CowboyCafe.Data
             }
         }
 
+        public override List<string> SpecialInstructions => new List<string>();
+
         /// <summary>
         /// Returns the human-readable string describing the order of pan de campo.
         /// </summary>

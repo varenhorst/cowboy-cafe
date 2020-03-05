@@ -1,4 +1,10 @@
-﻿using System;
+﻿/*
+ Author: Alex Varenhorst
+ Modified: 3/3/2020 9:50pm
+ Class: CIS-400 Object Oriented Design
+ Description: The Iorderitem interface.
+ */
+using System;
 using System.Collections.Generic;
 using System.Text;
 

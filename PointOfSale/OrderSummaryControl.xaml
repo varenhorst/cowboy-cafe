@@ -30,6 +30,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Text="{Binding}" FontSize="13" TextAlignment="Left" Grid.Row="0" Grid.Column="0"/>
                             <TextBlock FontSize="13" TextAlignment="Right" Text="{Binding Path=Price, StringFormat=c}" Grid.Column="1" />
+                            <!--<ListView ItemsSource="{SpecialInstructions}"></ListView>  Change special instructions to IEnumerable-->
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

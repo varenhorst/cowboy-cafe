@@ -30,13 +30,15 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Left"> Item Selection </Button>
+        <Button Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Left" Name="Button"> Item Selection </Button>
         <Button Grid.Row="0" Width="150" Height="40" Name="CancelOrder"> Cancel Order </Button>
         <Button Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Right" Name="CompleteOrder"> Complete Order </Button>
 
 
         <local:OrderSummaryControl Grid.Column="1" Grid.Row="1"/>
-        <local:MenuItemSelectionControl Grid.Column="0" Grid.Row="1" />
-        
+        <Border Name ="Container" Grid.Column="0" Grid.Row="1">
+            <local:MenuItemSelectionControl Grid.Column="0" Grid.Row="1" />
+        </Border>
+
     </Grid>
 </UserControl>

@@ -36,12 +36,24 @@ namespace PointOfSale
             //add functions to the buttons.
             CancelOrder.Click += onRemoveOrder;
             CompleteOrder.Click += onAddOrder;
+            Button.Click += OnMenuItemSelectionButtonClicked;
+        }
+
+        public void OnMenuItemSelectionButtonClicked(object snder, RoutedEventArgs e)
+        {
+            Container.Child = new MenuItemSelectionControl();
+        }
+
+        public void SwapScreen(FrameworkElement e)
+        {
+            Container.Child = e;
         }
 
         //make the datacontext a new order.
         void onRemoveOrder(object sender, RoutedEventArgs e)
         {
             DataContext = new Order();
+            
         }
 
         //make the datacontext a new order.

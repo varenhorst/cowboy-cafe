@@ -17,6 +17,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CowboyCafe.Extensions;
 
 namespace PointOfSale
 {
@@ -31,7 +32,7 @@ namespace PointOfSale
             AddAngryChickenButton.Click += OnAddAngryChickenClicked;
             AddDakotaDoubleBurgerButton.Click += OnAddDakotaDoubleBurgerClicked;
             AddRustlersRibsButton.Click += OnAddRustlersRibsClicked;
-            AddCowpokeChiliButton.Click += OnAddCowpokeChiliClicked;
+            AddCowpokeChiliButton.Click += onAddOrderItemButtonClicked;
             AddPecosPulledPorkButton.Click += OnAddPecosPulledPorkClicked;
             AddTexasTripleBurgerButton.Click += OnAddTexasTripleBurgerClicked;
             AddJerkedSoda.Click += OnAddJerkedSodaClicked;
@@ -42,6 +43,40 @@ namespace PointOfSale
             AddCornDodgers.Click += OnAddCornDodgersClicked;
             AddPanDeCampo.Click += OnAddPanDeCampoClicked;
             AddBakedBeans.Click += OnAddBakedBeansClicked;
+        }
+
+        void onAddOrderItemButtonClicked(object sender, RoutedEventArgs e)
+        {
+            if(DataContext is Order data)
+            {
+                if (sender is Button button)
+                {
+                    switch (button.Tag)
+                    {
+                        case "CowpokeChili":
+                            var item = new CowpokeChili();
+                            var screen = new CowpokeChiliCustomization();
+                            AddItemAndOpenCustomizationScreen(item, screen);
+                            break;
+                    }
+                }
+            }
+        }
+
+        void AddItemAndOpenCustomizationScreen(IOrderItem item, FrameworkElement screen)
+        {
+            var order = DataContext as Order;
+            if (order == null) throw new Exception("DataContext expsected");
+
+            if(screen != null)
+            {
+                var orderControl = this.FindAncestor<OrderControl>();
+                if (orderControl == null) throw new Exception("An ancestor of OrderControl ,..");
+
+                screen.DataContext = item;
+                orderControl.SwapScreen(screen);
+            }
+            order.Add(item);
         }
 
         void OnAddTrailBurgerButtonClicked(object sender, RoutedEventArgs e)

@@ -28,7 +28,7 @@
 
         <StackPanel Grid.Row="0">
             <TextBlock>Entree</TextBlock>
-            <Button Name="AddCowpokeChiliButton">CowPoke Chili</Button>
+            <Button Name="AddCowpokeChiliButton" Tag="CowpokeChili">CowPoke Chili</Button>
             <Button Name="AddTrailBurgerButton">Trailburger</Button>
             <Button Name="AddAngryChickenButton">Angry Chicken</Button>
             <Button Name="AddPecosPulledPorkButton">Pecos Pulled Pork</Button>
@@ -52,5 +52,6 @@
             <Button Name="AddCowboyCoffee">Cowboy Coffee</Button>
             <Button Name="AddWater">Water</Button>
         </StackPanel>
+
     </Grid>
 </UserControl>

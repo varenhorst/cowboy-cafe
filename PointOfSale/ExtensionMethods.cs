@@ -16,7 +16,7 @@ namespace CowboyCafe.Extensions
             if (parent is null) return null;
             if (parent is T) return parent as T;
 
-            return FindAncestor<T>(parent);
+            return parent.FindAncestor<T>();
         }
     }
 }

@@ -12,10 +12,22 @@ namespace CowboyCafe.Data
 {
     public class JerkedSoda : Drink
     {
+        private SodaFlavor flavor = SodaFlavor.CreamSoda;
         /// <summary>
         /// Property for the flavor
         /// </summary>
-        public SodaFlavor Flavor { get; set; }
+        public SodaFlavor Flavor 
+        {
+            get
+            {
+                return flavor;
+            }
+            set
+            {
+                flavor = value;
+                NotifyThatPropertyChanged("Flavor");
+            }
+        }
 
 
         private bool ice = true;

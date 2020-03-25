@@ -13,7 +13,7 @@ namespace CowboyCafe.Data
     /// <summary>
     /// A class representing the Cowpoke Chili entree
     /// </summary>
-    public class CowpokeChili : Entree
+    public class CowpokeChili : Entree, INotifyPropertyChanged
     {
        // public event PropertyChangedEventHandler PropertyChanged;
 
@@ -70,7 +70,11 @@ namespace CowboyCafe.Data
         public bool TortillaStrips
         {
             get { return tortillaStrips; }
-            set { tortillaStrips = value; }
+            set 
+            { 
+                tortillaStrips = value;
+                NotifyOfPropertyChange("TortillaStrips");
+            }
         }
 
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿/*
  Author: Alex Varenhorst
- Modified: 3/3/2020 9:50pm
+ Modified: 3/23/2020 9:50pm
  Class: CIS-400 Object Oriented Design
  Description: Class that represents an order
  */
@@ -16,7 +16,7 @@ namespace CowboyCafe.Data
         /// <summary>
         /// Number holding the number of the last order.
         /// </summary>
-        static private uint lastOrderNumber = 0;
+        static private uint lastOrderNumber;
         
         /// <summary>
         /// List of IOrderItems
@@ -35,7 +35,7 @@ namespace CowboyCafe.Data
             get
             {
                 double price = 0;
-                foreach (var item in Items)
+                foreach (IOrderItem item in items)
                 {
                     price += item.Price;
                 }
@@ -50,16 +50,7 @@ namespace CowboyCafe.Data
         { 
             get
             {
-                int i = 0;
-                foreach(var item in Items)
-                {
-                    i++;
-                }
-                if(i == 0)
-                {
-                    lastOrderNumber = lastOrderNumber + 1;
-                    return lastOrderNumber;
-                }
+                lastOrderNumber++;
                 return lastOrderNumber;
             }
         }
@@ -70,13 +61,14 @@ namespace CowboyCafe.Data
         /// <param name="item"></param>
         public void Add(IOrderItem item)
         {
-            if(item is INotifyPropertyChanged notifier)
-            {
-                notifier.PropertyChanged += OnItemPropertyChanged;
-            }
-            //item += OnItemPropertyChanged;
             items.Add(item);
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Itemss"));
+
+            if(item is INotifyPropertyChanged changeditem)
+            {
+                changeditem.PropertyChanged += OnItemPropertyChanged;
+            }
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("orderNumber"));
         }
@@ -86,17 +78,22 @@ namespace CowboyCafe.Data
         /// <param name="item"></param>
         public void Remove(IOrderItem item)
         {
-            if(item is INotifyPropertyChanged notifier)
-            {
-                notifier.PropertyChanged -= OnItemPropertyChanged;
-            }
-            //item -= OnItemPropertyChanged;
             items.Remove(item);
+
+            if(item is INotifyPropertyChanged changeditem)
+            {
+                changeditem.PropertyChanged -= OnItemPropertyChanged;
+            }
+           
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
-            // PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
         }
-
+        
+        /// <summary>
+        /// If the items property changed, invoke changes on price/subtotal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnItemPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("items"));
@@ -104,6 +101,25 @@ namespace CowboyCafe.Data
             {
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
             }
+        }
+
+        /// <summary>
+        /// Function to change the total, and the size based on size chosen
+        /// </summary>
+        public void ChangeSizeEnum()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+        }
+
+        /// <summary>
+        /// Function to change total, and the flavor based on the flavor chosen. Only used in Jerked Soda.
+        /// </summary>
+        public void ChangeFlavorEnum()
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Items"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Subtotal"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Flavor"));
         }
     }
 }

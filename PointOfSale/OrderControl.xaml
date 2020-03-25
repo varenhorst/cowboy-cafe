@@ -30,9 +30,9 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <Button Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Left" Name="Button"> Item Selection </Button>
-        <Button Grid.Row="0" Width="150" Height="40" Name="CancelOrder"> Cancel Order </Button>
-        <Button Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Right" Name="CompleteOrder"> Complete Order </Button>
+        <Button Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Left" Click="OnItemSelection_Click"> Item Selection </Button>
+        <Button Grid.Row="0" Width="150" Height="40" Name="CancelOrder" Click="OnRemoveOrder_Click"> Cancel Order </Button>
+        <Button Grid.Row="0" Width="150" Height="40" HorizontalAlignment="Right" Name="CompleteOrder" Click="OnAddOrder_Click"> Complete Order </Button>
 
 
         <local:OrderSummaryControl Grid.Column="1" Grid.Row="1"/>

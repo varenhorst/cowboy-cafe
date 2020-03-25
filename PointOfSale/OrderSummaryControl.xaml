@@ -28,11 +28,14 @@
                                 <ColumnDefinition Width="200"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Text="{Binding}" FontSize="13" TextAlignment="Left" Grid.Row="0" Grid.Column="0"/>
-                            <TextBlock Text="{Binding}" FontSize="13" TextAlignment="Left" Grid.Row="0" Grid.Column="0"/>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding}" FontSize="13" Grid.Row="0"/>
 
-                            <TextBlock FontSize="13" TextAlignment="Right" Text="{Binding Path=Price, StringFormat=c}" Grid.Column="1" />
-                            <!--<ListView ItemsSource="{SpecialInstructions}"></ListView>  Change special instructions to IEnumerable-->
+                           <TextBlock FontSize="13" HorizontalAlignment="Right" Text="{Binding Path=Price, StringFormat=c}" Grid.Column="1" />
+                           <ListView ItemsSource="{Binding Path = SpecialInstructions}" Grid.Row="1"></ListView>
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>

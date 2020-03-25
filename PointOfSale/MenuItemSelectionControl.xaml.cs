@@ -18,6 +18,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CowboyCafe.Extensions;
+using PointOfSale;
+using PointOfSale.CustomizationScreens;
 
 namespace PointOfSale
 {
@@ -28,172 +30,100 @@ namespace PointOfSale
     {
         public MenuItemSelectionControl()
         {
-            InitializeComponent(); AddTrailBurgerButton.Click += OnAddTrailBurgerButtonClicked;
-            AddAngryChickenButton.Click += OnAddAngryChickenClicked;
-            AddDakotaDoubleBurgerButton.Click += OnAddDakotaDoubleBurgerClicked;
-            AddRustlersRibsButton.Click += OnAddRustlersRibsClicked;
-            AddCowpokeChiliButton.Click += onAddOrderItemButtonClicked;
-            AddPecosPulledPorkButton.Click += OnAddPecosPulledPorkClicked;
-            AddTexasTripleBurgerButton.Click += OnAddTexasTripleBurgerClicked;
-            AddJerkedSoda.Click += OnAddJerkedSodaClicked;
-            AddTexasTea.Click += OnAddTexasTeaClicked;
-            AddWater.Click += OnAddWaterClicked;
-            AddCowboyCoffee.Click += OnAddCowboyCoffeeClicked;
-            AddChiliCheeseFries.Click += OnAddChiliCheeseFries;
-            AddCornDodgers.Click += OnAddCornDodgersClicked;
-            AddPanDeCampo.Click += OnAddPanDeCampoClicked;
-            AddBakedBeans.Click += OnAddBakedBeansClicked;
+            InitializeComponent(); 
         }
 
-        void onAddOrderItemButtonClicked(object sender, RoutedEventArgs e)
+        void AddTrailBurgerButton_Click(object sender, RoutedEventArgs e)
         {
-            if(DataContext is Order data)
-            {
-                if (sender is Button button)
-                {
-                    switch (button.Tag)
-                    {
-                        case "CowpokeChili":
-                            var item = new CowpokeChili();
-                            var screen = new CowpokeChiliCustomization();
-                            AddItemAndOpenCustomizationScreen(item, screen);
-                            break;
-                    }
-                }
-            }
+            AddItemAndOpenCustomizationScreen(new TrailBurger(), new TrailBurgerCustomization());
         }
 
+        void AddAngryChicken_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new AngryChicken(), new AngryChickenCustomization());
+        }
+
+        void AddDakotaDoubleBurger_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new DakotaDoubleBurger(), new DakotaDoubleBurgerCustomization());
+        }
+
+        void AddRustlersRibs_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new RustlersRibs(), new RustlersRibsCustomization());
+        }
+
+        void AddCowpokeChiliButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new CowpokeChili(), new CowpokeChiliCustomization());
+        }
+
+        void AddPecosPulledPork_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new PecosPulledPork(), new PecosPulledPorkCustomization());
+        }
+
+        void AddTexasTripleBurger_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new TexasTripleBurger(), new TexasTripleBurgerCustomization());
+        }
+
+        void AddJerkedSoda_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new JerkedSoda(), new JerkedSodaCustomization());
+        }
+
+        void AddWater_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new Water(), new WaterCustomization());
+        }
+
+        void AddCowboyCoffee_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new CowboyCoffee(), new CowboyCoffeeCustomization());
+        }
+
+        void AddTexasTea_Click(object sender, RoutedEventArgs e)
+        {
+           AddItemAndOpenCustomizationScreen(new TexasTea(), new TexasTeaCustomization());
+        }
+
+        void AddChiliCheeseFries_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new ChiliCheeseFries(), new ChiliCheeseFriesCustomization());
+        }
+        void AddCornDodgers_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new CornDodgers(), new CornDodgersCustomization());
+        }
+        void AddPanDeCampo_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new PanDeCampo(), new PanDeCampoCustomization());
+        }
+        void AddBakedBeans_Click(object sender, RoutedEventArgs e)
+        {
+            AddItemAndOpenCustomizationScreen(new BakedBeans(), new BakedBeansCustomization());
+        }
+        
+
+        /// <summary>
+        /// Method for opening the customization screens, with the given context
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="screen"></param>
         void AddItemAndOpenCustomizationScreen(IOrderItem item, FrameworkElement screen)
         {
-            var order = DataContext as Order;
-            if (order == null) throw new Exception("DataContext expsected");
+            var orderCon = this.FindAncestor<OrderControl>();
 
-            if(screen != null)
+            if (DataContext is Order data)
             {
-                var orderControl = this.FindAncestor<OrderControl>();
-                if (orderControl == null) throw new Exception("An ancestor of OrderControl ,..");
-
+                data.Add(item);
                 screen.DataContext = item;
-                orderControl.SwapScreen(screen);
+                orderCon?.SwapScreen(screen);
             }
-            order.Add(item);
+
         }
 
-        void OnAddTrailBurgerButtonClicked(object sender, RoutedEventArgs e)
-        {
-            if(DataContext is Order data)
-            {
-               data.Add(new TrailBurger());
-            }
-        }
-
-        void OnAddAngryChickenClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new AngryChicken());
-            }
-        }
-
-        void OnAddDakotaDoubleBurgerClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new DakotaDoubleBurger());
-            }
-        }
-
-        void OnAddRustlersRibsClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new RustlersRibs());
-            }
-        }
-
-        void OnAddCowpokeChiliClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new CowpokeChili());
-            }
-        }
-
-        void OnAddPecosPulledPorkClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new PecosPulledPork());
-            }
-        }
-
-        void OnAddTexasTripleBurgerClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new TexasTripleBurger());
-            }
-        }
-
-        void OnAddJerkedSodaClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new JerkedSoda());
-            }
-        }
-
-        void OnAddWaterClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new Water());
-            }
-        }
-
-        void OnAddCowboyCoffeeClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new CowboyCoffee());
-            }
-        }
-
-        void OnAddTexasTeaClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new TexasTea());
-            }
-        }
-
-        void OnAddChiliCheeseFries(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new ChiliCheeseFries());
-            }
-        }
-        void OnAddCornDodgersClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new CornDodgers());
-            }
-        }
-        void OnAddPanDeCampoClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new PanDeCampo());
-            }
-        }
-        void OnAddBakedBeansClicked(object sender, RoutedEventArgs e)
-        {
-            if (DataContext is Order data)
-            {
-                data.Add(new BakedBeans());
-            }
-        }
+ 
     }
 }

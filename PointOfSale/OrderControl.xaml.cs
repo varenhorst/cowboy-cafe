@@ -32,17 +32,13 @@ namespace PointOfSale
             var data = new Order();
 
             DataContext = data;
-
-            //add functions to the buttons.
-            CancelOrder.Click += onRemoveOrder;
-            CompleteOrder.Click += onAddOrder;
-            Button.Click += OnMenuItemSelectionButtonClicked;
         }
 
-        public void OnMenuItemSelectionButtonClicked(object snder, RoutedEventArgs e)
+        public void OnItemSelection_Click(object snder, RoutedEventArgs e)
         {
             Container.Child = new MenuItemSelectionControl();
         }
+
 
         public void SwapScreen(FrameworkElement e)
         {
@@ -50,16 +46,38 @@ namespace PointOfSale
         }
 
         //make the datacontext a new order.
-        void onRemoveOrder(object sender, RoutedEventArgs e)
+        void OnRemoveOrder_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Order();
-            
+            if (DataContext is Order)
+            {
+                DataContext = new Order();
+            }
         }
 
         //make the datacontext a new order.
-        void onAddOrder(object sender, RoutedEventArgs e)
+        void OnAddOrder_Click(object sender, RoutedEventArgs e)
         {
-            DataContext = new Order();
+            if(DataContext is Order)
+            {
+                DataContext = new Order();
+            }
         }
+
+        public void ChangeSizeEnum()
+        {
+            if(DataContext is Order order)
+            {
+                order.ChangeSizeEnum();
+            }
+        }
+
+        public void ChangeFlavorEnum()
+        {
+            if(DataContext is Order order)
+            {
+                order.ChangeFlavorEnum();
+            }
+        }
+
     }
 }

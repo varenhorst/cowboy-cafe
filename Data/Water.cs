@@ -12,15 +12,40 @@ namespace CowboyCafe.Data
 {
     public class Water : Drink
     {
+
+        private bool lemon = false;
         /// <summary>
         /// If there is lemon in the water
         /// </summary>
-        public bool Lemon { get; set; } = false;
+        public bool Lemon 
+        {
+            get
+            {
+                return lemon;
+            }
+            set
+            {
+                lemon = value;
+                NotifyThatPropertyChanged("Lemon");
+            }
+        }
 
+        private bool ice = true;
         /// <summary>
         /// if there is ice in the water.
         /// </summary>
-        public override bool Ice { get; set; } = true;
+        public override bool Ice 
+        { 
+            get
+            {
+                return ice;
+            }
+            set 
+            {
+                ice = value;
+                NotifyThatPropertyChanged("Ice");
+            } 
+        }
 
         /// <summary>
         /// The price of the water

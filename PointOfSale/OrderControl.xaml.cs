@@ -34,35 +34,56 @@ namespace PointOfSale
             DataContext = data;
         }
 
+        /// <summary>
+        /// If Item selection is clicked, create a new MenuItemSelectionControl
+        /// </summary>
+        /// <param name="snder"></param>
+        /// <param name="e"></param>
         public void OnItemSelection_Click(object snder, RoutedEventArgs e)
         {
             Container.Child = new MenuItemSelectionControl();
         }
 
-
+        /// <summary>
+        /// Swap screen, set container.Child to given element.
+        /// </summary>
+        /// <param name="e"></param>
         public void SwapScreen(FrameworkElement e)
         {
             Container.Child = e;
         }
 
-        //make the datacontext a new order.
+       /// <summary>
+       /// Cancels the order | Sets the datacontext to a new order instance.
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         void OnRemoveOrder_Click(object sender, RoutedEventArgs e)
         {
             if (DataContext is Order)
             {
                 DataContext = new Order();
+                Container.Child = new MenuItemSelectionControl();
             }
         }
 
-        //make the datacontext a new order.
+        /// <summary>
+        /// Adds an order | Sets the datacontext to a new order instance.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void OnAddOrder_Click(object sender, RoutedEventArgs e)
         {
             if(DataContext is Order)
             {
                 DataContext = new Order();
+                Container.Child = new MenuItemSelectionControl();
             }
         }
 
+        /// <summary>
+        /// Calls ChangeSizeEnum on the order.
+        /// </summary>
         public void ChangeSizeEnum()
         {
             if(DataContext is Order order)
@@ -71,6 +92,9 @@ namespace PointOfSale
             }
         }
 
+        /// <summary>
+        /// Calls ChangeFlavor enum to the order. Only pertains to jerked soda.
+        /// </summary>
         public void ChangeFlavorEnum()
         {
             if(DataContext is Order order)

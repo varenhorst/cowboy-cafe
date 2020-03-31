@@ -12,6 +12,8 @@ namespace CowboyCafe.DataTests
         public double Price { get; set; }
 
         public List<string> SpecialInstructions { get; set; }
+
+        object IOrderItem.CustomizationScreen { get; set; }
     }
     public class OrderTests
     {
@@ -56,7 +58,7 @@ namespace CowboyCafe.DataTests
         }
 
         [Fact]
-        public void ItemsShouldContainOnluAddedItems()
+        public void ItemsShouldContainOnlyAddedItems()
         {
             var items = new IOrderItem[]
             {

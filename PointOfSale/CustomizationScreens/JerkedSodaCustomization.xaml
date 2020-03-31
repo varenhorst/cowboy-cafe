@@ -23,7 +23,8 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="175"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
@@ -33,12 +34,16 @@
                      SelectedItem="{Binding Path=Size}"
                      SelectionChanged="AddSize_Click"/>
         </StackPanel>
-        <StackPanel Grid.Row="1">
+        <StackPanel Grid.Row="1" Margin="0,20,0,0">
             <TextBlock HorizontalAlignment="Left">Choose Size of Drink</TextBlock>
             <ListView x:Name="Flavors" FontSize="13" Height="150"
                      ItemsSource="{Binding Source={StaticResource FlavorValues}}"
                      SelectedItem="{Binding Path=Flavor}"
                      SelectionChanged="AddFlavor_Click" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,20,0,0">
+            <CheckBox FontSize="20" IsChecked="{Binding Path=Ice}">Ice</CheckBox>
         </StackPanel>
     </Grid>
 </UserControl>

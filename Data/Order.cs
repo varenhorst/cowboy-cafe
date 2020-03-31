@@ -25,6 +25,7 @@ namespace CowboyCafe.Data
 
         //event property.
         public event PropertyChangedEventHandler PropertyChanged;
+
         public IEnumerable<IOrderItem> Items => items.ToArray();
 
         /// <summary>

@@ -36,8 +36,15 @@ namespace CowboyCafe.Data
         /// </summary>
         public override bool Ice
         {
-            get { return ice; }
-            set { ice = value; }
+            get 
+            { 
+                return ice; 
+            }
+            set 
+            { 
+                ice = value;
+                NotifyThatPropertyChanged("Ice");
+            }
         }
 
         /// <summary>

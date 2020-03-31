@@ -13,6 +13,15 @@ namespace CowboyCafe.Data
 {
     public abstract class Entree : IOrderItem, INotifyPropertyChanged
     {
+
+        /// <summary>
+        /// Customization screen
+        /// </summary>
+        public object CustomizationScreen { get; set; }
+
+        /// <summary>
+        /// Event handler if the property is changed.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>

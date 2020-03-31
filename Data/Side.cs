@@ -16,6 +16,14 @@ namespace CowboyCafe.Data
     /// </summary>
     public abstract class Side : IOrderItem, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Customization Screen
+        /// </summary>
+        public object CustomizationScreen { get; set; }
+
+        /// <summary>
+        /// Event handler for property changes.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         private Size size;

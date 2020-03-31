@@ -117,8 +117,9 @@ namespace PointOfSale
 
             if (DataContext is Order data)
             {
-                data.Add(item);
+                item.CustomizationScreen = screen;
                 screen.DataContext = item;
+                data.Add(item);
                 orderCon?.SwapScreen(screen);
             }
 

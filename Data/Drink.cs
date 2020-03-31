@@ -17,6 +17,11 @@ namespace CowboyCafe.Data
     public abstract class Drink : IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
+        /// Customization screen | IOrderItem
+        /// </summary>
+        public object CustomizationScreen { get; set; }
+
+        /// <summary>
         /// Event handler for property changes
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;

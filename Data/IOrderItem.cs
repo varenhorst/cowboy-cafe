@@ -22,5 +22,7 @@ namespace CowboyCafe.Data
         /// </summary>
         List<string> SpecialInstructions { get; }
 
+        object CustomizationScreen { get; set; }
+
     }
 }

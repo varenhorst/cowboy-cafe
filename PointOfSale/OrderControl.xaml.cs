@@ -93,7 +93,7 @@ namespace PointOfSale
         }
 
         /// <summary>
-        /// Calls ChangeFlavor enum to the order. Only pertains to jerked soda.
+        /// Calls ChangeFlavor enum to the order. [Only pertains to jerked soda.
         /// </summary>
         public void ChangeFlavorEnum()
         {

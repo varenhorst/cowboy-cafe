@@ -1,0 +1,55 @@
+﻿@page
+@using CowboyCafe.Data
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <div class="text-center">
+        <h1>Welcome to Cowboy Cafe</h1>
+        <p>
+            We at Cowboy Cafe are proud to bring you authentic trail meals from the American West.
+            Shake off the dust on your boots and sake your thirst with one of our old-fashioned hand-jerked sodas.
+            Dip your Pan de Campo into a bowl of beans. Or conquer the the mighty Texas Triple Burger!
+            You’ve had a hard ride - so take it easy with us.
+        </p>
+
+        <div class="col-sm">
+            <h1>Entrees:</h1>
+
+            @foreach (Entree entree in Menu.AllEntrees())
+            {
+                <div class="entree">
+                    <span class="item">@entree.ToString()</span> | <span class="calories">@entree.Calories.ToString()</span> | <span class="price">$@Math.Round(entree.Price, 2).ToString()</span>
+                </div>
+            }
+        </div>
+        <hr />
+        <div class="col-sm">
+            <h1>Sides:</h1>
+
+            @foreach (Side side in Menu.AllSides())
+            {
+                @foreach (Size size in Enum.GetValues(typeof(CowboyCafe.Data.Size)))
+                    Menu.UpdateSideSize(side, size);
+                    <div class="entree">
+                        <span class="item">@side.ToString()</span> | <span class="calories">@side.Calories.ToString()</span> | <span class="price">$@Math.Round(side.Price, 2).ToString()</span>
+                    </div>
+                
+            }
+        </div>
+        <hr />
+        <div class="col-sm">
+            <h1>Sides:</h1>
+
+            @foreach (Drink drink in Menu.AllDrinks())
+            {
+                @foreach (Size size in Enum.GetValues(typeof(CowboyCafe.Data.Size)))
+                    Menu.UpdateDrinkSize(drink, size);
+                    <div class="entree">
+                        <span class="item">@drink.ToString()</span> | <span class="calories">@drink.Calories.ToString()</span> | <span class="price">$@Math.Round(drink.Price, 2).ToString()</span>
+                    </div>
+                
+            }
+        </div>
+    </div>

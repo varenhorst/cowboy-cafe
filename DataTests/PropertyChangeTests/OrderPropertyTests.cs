@@ -14,6 +14,10 @@ namespace CowboyCafe.DataTests.PropertyChangeTests
             public double Price { get; set; }
             public List<string> SpecialInstructions { get; set; } = new List<string>();
             object IOrderItem.CustomizationScreen { get; set; }
+
+            public string OrderType { get; set; }
+
+            public uint Calories { get; }
         }
 
         [Fact]

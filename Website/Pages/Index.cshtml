@@ -14,6 +14,41 @@
             You’ve had a hard ride - so take it easy with us.
         </p>
 
+
+        <div id="menu-search" style="display:flex; position:absolute; flex-direction:column; z-index:1;">
+            <div id="search">
+                <input type="search" name="terms" value="@Model.SearchTerms" />
+                <input type="submit" value="Search"/>
+            </div>
+            <div id="menu-list" style="background:lightgray;">
+                <div id="filter-list">
+                    <h5>Order Type</h5>
+                    @foreach (String item in Menu.OrderTypes)
+                    {
+                        <label>
+                            <input type="checkbox" name="ordertypes" value="@item" checked="@Model.OrderTypes?.Contains(item)" />
+                            @item
+                        </label>
+                    }
+                <div class="calFilter">
+                    <h5>By Calories:</h5>
+                    &darr;
+                    <input name="MinCalorie" type="number" min="0" max="100" step="1" placeholder="minimum" value="@Model.MinCalorie" />
+                    &#8593;
+                    <input name="MaxCalorie" type="number" min="0" max="100" step="1" placeholder="maximum" value="@Model.MaxCalorie" />
+                </div>
+
+                <div class="priceFilter">
+                    <h5>By Price:</h5>
+                    &darr;
+                    <input name="MinPrice" type="number" min="0" max="100" step="1" placeholder="minimum" value="@Model.MinPrice" />
+                    &#8593;
+                    <input name="MaxPrice" type="number" min="0" max="100" step="1" placeholder="maximum" value="@Model.MaxPrice" />
+                </div>
+                </div>
+            </div>
+        </div>
+
         <div class="col-sm">
             <h1>Entrees:</h1>
 

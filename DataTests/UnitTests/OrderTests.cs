@@ -14,6 +14,10 @@ namespace CowboyCafe.DataTests
         public List<string> SpecialInstructions { get; set; }
 
         object IOrderItem.CustomizationScreen { get; set; }
+
+        public string OrderType { get; set; }
+
+        public uint Calories { get; }
     }
     public class OrderTests
     {

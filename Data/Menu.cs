@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace CowboyCafe.Data
@@ -7,6 +8,10 @@ namespace CowboyCafe.Data
     public static class Menu
     {
 
+        public static string[] OrderTypes
+        {
+            get => new string[] {"Side","Entree","Drink"};
+        }
         /// <summary>
         /// Gets all the menu items that exist in cowboy cafe.
         /// </summary>
@@ -32,7 +37,7 @@ namespace CowboyCafe.Data
                 new RustlersRibs(),
                 new TrailBurger(),
                 new CowpokeChili()
-                
+
             };
 
             return completeMenu;
@@ -76,6 +81,150 @@ namespace CowboyCafe.Data
             };
             return alldrinks;
         }
+
+        /// <summary>
+        /// Searchs for a given string in the Cowboy cafe menu
+        /// </summary>
+        /// <param name="orders"></param>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> orders, string s)
+        {
+            List<IOrderItem> results = new List<IOrderItem>();
+
+            if (s == null) return orders;
+
+            foreach (IOrderItem order in orders)
+            {
+                if (order.ToString().Contains(s,StringComparison.InvariantCultureIgnoreCase))
+                {
+                    results.Add(order);
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        /// FIlters the search by the order type.
+        /// </summary>
+        /// <param name="orders"></param>
+        /// <param name="menuCategories"></param>
+        /// <returns></returns>
+        public static IEnumerable<IOrderItem> FilterByCategory(IEnumerable<IOrderItem> orders, IEnumerable<string> menuCategories)
+        {
+            List<IOrderItem> results = new List<IOrderItem>();
+            if (menuCategories == null || menuCategories.Count() == 0)
+            {
+                return orders;
+            }
+            foreach(IOrderItem order in orders)
+            {
+               if(order.OrderType != null && menuCategories.Contains(order.OrderType))
+                {
+                    results.Add(order);
+                }
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Filters the search by price.
+        /// </summary>
+        /// <param name="orders"></param>
+        /// <param name="max"></param>
+        /// <param name="min"></param>
+        /// <returns></returns>
+        public static IEnumerable<IOrderItem> FilterByPrice(IEnumerable<IOrderItem> orders, double? max, double? min)
+        {
+            if (min == null && max == null) return orders;
+
+            List<IOrderItem> results = new List<IOrderItem>();
+
+            if(max == null)
+            {
+                foreach(IOrderItem item in orders)
+                {
+                    if(item.Price >= min)
+                    {
+                        results.Add(item);
+                    }
+                }
+                return results;
+            }
+            if (min == null)
+            {
+                foreach (IOrderItem item in orders)
+                {
+                    if (item.Price <= max)
+                    {
+                        results.Add(item);
+                    }
+                }
+                return results;
+            }
+            foreach(IOrderItem item in orders)
+            {
+                if(item.Price >= min && item.Price <= max)
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        /// Filters the search by calories
+        /// </summary>
+        /// <param name="orders"></param>
+        /// <param name="max"></param>
+        /// <param name="min"></param>
+        /// <returns></returns>
+        public static IEnumerable<IOrderItem> FilterByCalories(IEnumerable<IOrderItem> orders, double? max, double? min)
+        {
+            List<IOrderItem> results = new List<IOrderItem>();
+            if (min == null && max == null)
+            {
+                return orders;
+            }
+
+            if (max == null)
+            {
+                foreach (IOrderItem item in orders)
+                {
+                    if (item.Calories >= min)
+                    {
+                        results.Add(item);
+                    }
+                }
+                return results;
+            }
+            if (min == null)
+            {
+                foreach (IOrderItem item in orders)
+                {
+                    if (item.Calories <= max)
+                    {
+                        results.Add(item);
+                    }
+                }
+                return results;
+            }
+
+            foreach (IOrderItem item in orders)
+            {
+                if (item.Calories >= min && item.Calories <= max)
+                {
+                    results.Add(item);
+                }
+            }
+            return results;
+        }
+
+        public static IEnumerable<IOrderItem> Entrees => AllEntrees();
+        public static IEnumerable<IOrderItem> Drinks => AllDrinks();
+        public static IEnumerable<IOrderItem> Sides => AllSides();
+
 
         /// <summary>
         /// Changes the side of the drink

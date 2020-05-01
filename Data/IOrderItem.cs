@@ -24,5 +24,9 @@ namespace CowboyCafe.Data
 
         object CustomizationScreen { get; set; }
 
+        string OrderType { get; set; }
+
+        uint Calories { get; }
+
     }
 }

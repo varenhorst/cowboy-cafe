@@ -13,7 +13,10 @@ namespace CowboyCafe.Data
 {
     public abstract class Entree : IOrderItem, INotifyPropertyChanged
     {
-
+        /// <summary>
+        /// The type of this class
+        /// </summary>
+        public string OrderType { get; set; } = "Entree";
         /// <summary>
         /// Customization screen
         /// </summary>

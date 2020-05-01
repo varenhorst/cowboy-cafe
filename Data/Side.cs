@@ -17,6 +17,10 @@ namespace CowboyCafe.Data
     public abstract class Side : IOrderItem, INotifyPropertyChanged
     {
         /// <summary>
+        /// The type of this class
+        /// </summary>
+        public string OrderType { get; set; } = "Side";
+        /// <summary>
         /// Customization Screen
         /// </summary>
         public object CustomizationScreen { get; set; }

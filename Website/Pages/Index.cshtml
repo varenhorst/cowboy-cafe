@@ -86,7 +86,8 @@
                         <div class="entree">
                             <span class="item">Jerked Soda</span> | <span class="calories">@drink.Calories.ToString()</span> | <span class="price">$@Math.Round(drink.Price, 2).ToString()</span> <span id="selections">See Flavors:</span>
                             <div id="sodaFlavors" style="display:none">
-                                @foreach (SodaFlavor flavor in Enum.GetValues(typeof(CowboyCafe.Data.SodaFlavor)))
+                                <!--Display the jerked soda flavors here-->
+                                @foreach (SodaFlavor flavor in Enum.GetValues(typeof(CowboyCafe.Data.SodaFlavor))) 
                                 {
                                     <span class="item">|@flavor.ToString()|</span>
                                 }

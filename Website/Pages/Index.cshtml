@@ -14,13 +14,13 @@
             You’ve had a hard ride - so take it easy with us.
         </p>
 
-
-        <div id="menu-search" style="display:flex; position:absolute; flex-direction:column; z-index:1;">
+        <div id="menu-search">
             <div id="search">
                 <input type="search" name="terms" value="@Model.SearchTerms" />
-                <input type="submit" value="Search"/>
+                <input type="submit" value="Search" />
+                <div id="advanced-search">Advanced Search</div>
             </div>
-            <div id="menu-list" style="background:lightgray;">
+            <div id="menu-list" style="background:lightgray; display:none">
                 <div id="filter-list">
                     <h5>Order Type</h5>
                     @foreach (String item in Menu.OrderTypes)
@@ -30,61 +30,77 @@
                             @item
                         </label>
                     }
-                <div class="calFilter">
-                    <h5>By Calories:</h5>
-                    &darr;
-                    <input name="MinCalorie" type="number" min="0" max="100" step="1" placeholder="minimum" value="@Model.MinCalorie" />
-                    &#8593;
-                    <input name="MaxCalorie" type="number" min="0" max="100" step="1" placeholder="maximum" value="@Model.MaxCalorie" />
-                </div>
+                    <div class="calFilter">
+                        <h5>By Calories:</h5>
+                        &darr;
+                        <input name="MinCalorie" type="number" min="0" max="100" step="1" placeholder="minimum" value="@Model.MinCalorie" />
+                        &#8593;
+                        <input name="MaxCalorie" type="number" min="0" max="100" step="1" placeholder="maximum" value="@Model.MaxCalorie" />
+                    </div>
 
-                <div class="priceFilter">
-                    <h5>By Price:</h5>
-                    &darr;
-                    <input name="MinPrice" type="number" min="0" max="100" step="1" placeholder="minimum" value="@Model.MinPrice" />
-                    &#8593;
-                    <input name="MaxPrice" type="number" min="0" max="100" step="1" placeholder="maximum" value="@Model.MaxPrice" />
-                </div>
+                    <div class="priceFilter">
+                        <h5>By Price:</h5>
+                        &darr;
+                        <input name="MinPrice" type="number" min="0" max="100" step="1" placeholder="minimum" value="@Model.MinPrice" />
+                        &#8593;
+                        <input name="MaxPrice" type="number" min="0" max="100" step="1" placeholder="maximum" value="@Model.MaxPrice" />
+                    </div>
                 </div>
             </div>
         </div>
+        <div id="menu-container">
+            <div class="col-sm" id="entree-container">
+                <h1>Entrees:</h1>
 
-        <div class="col-sm">
-            <h1>Entrees:</h1>
+                @foreach (Entree entree in Menu.AllEntrees())
+                {
+                    <div class="entree">
+                        <span class="item">@entree.ToString()</span> | <span class="calories">@entree.Calories.ToString()</span> | <span class="price">$@Math.Round(entree.Price, 2).ToString()</span>
+                    </div>
+                }
+            </div>
+            <hr />
+            <div class="col-sm" id="side-container">
+                <h1>Sides:</h1>
 
-            @foreach (Entree entree in Menu.AllEntrees())
-            {
-                <div class="entree">
-                    <span class="item">@entree.ToString()</span> | <span class="calories">@entree.Calories.ToString()</span> | <span class="price">$@Math.Round(entree.Price, 2).ToString()</span>
-                </div>
-            }
-        </div>
-        <hr />
-        <div class="col-sm">
-            <h1>Sides:</h1>
-
-            @foreach (Side side in Menu.AllSides())
-            {
-                @foreach (Size size in Enum.GetValues(typeof(CowboyCafe.Data.Size)))
-                    Menu.UpdateSideSize(side, size);
+                @foreach (Side side in Menu.AllSides())
+                {
+                    @foreach (Size size in Enum.GetValues(typeof(CowboyCafe.Data.Size)))
+                        Menu.UpdateSideSize(side, size);
                     <div class="entree">
                         <span class="item">@side.ToString()</span> | <span class="calories">@side.Calories.ToString()</span> | <span class="price">$@Math.Round(side.Price, 2).ToString()</span>
                     </div>
-                
-            }
-        </div>
-        <hr />
-        <div class="col-sm">
-            <h1>Sides:</h1>
 
-            @foreach (Drink drink in Menu.AllDrinks())
-            {
-                @foreach (Size size in Enum.GetValues(typeof(CowboyCafe.Data.Size)))
-                    Menu.UpdateDrinkSize(drink, size);
-                    <div class="entree">
-                        <span class="item">@drink.ToString()</span> | <span class="calories">@drink.Calories.ToString()</span> | <span class="price">$@Math.Round(drink.Price, 2).ToString()</span>
-                    </div>
-                
-            }
+                }
+            </div>
+            <hr />
+            <div class="col-sm" id="drink-container">
+                <h1>Drinks:</h1>
+
+                @foreach (Drink drink in Menu.AllDrinks())
+                {
+                    @foreach (Size size in Enum.GetValues(typeof(CowboyCafe.Data.Size)))
+                        Menu.UpdateDrinkSize(drink, size);
+                    @if (drink.ToString() == "Large Cream Soda Jerked Soda")
+                    {
+                        <div class="entree">
+                            <span class="item">Jerked Soda</span> | <span class="calories">@drink.Calories.ToString()</span> | <span class="price">$@Math.Round(drink.Price, 2).ToString()</span> <span id="selections">See Flavors:</span>
+                            <div id="sodaFlavors" style="display:none">
+                                @foreach (SodaFlavor flavor in Enum.GetValues(typeof(CowboyCafe.Data.SodaFlavor)))
+                                {
+                                    <span class="item">|@flavor.ToString()|</span>
+                                }
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="entree">
+                            <span class="item">@drink.ToString()</span> | <span class="calories">@drink.Calories.ToString()</span> | <span class="price">$@Math.Round(drink.Price, 2).ToString()</span>
+                        </div>
+                    }
+
+                }
+            </div>
         </div>
     </div>

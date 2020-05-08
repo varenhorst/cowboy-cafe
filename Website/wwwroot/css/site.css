@@ -72,3 +72,55 @@ body {
 
 
 /*Styles for search functionality*/
+#advanced-search { /*Button for seeing extra search parameters*/
+    font-size: 13px;
+    border: 1px solid gray;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#selections{ /*Button for seeing all Jerked Soda Flavors*/
+    border: 1px solid gray;
+    font-size:13px;
+    cursor:pointer;
+}
+
+#menu-search {
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    width:490px;
+    margin:auto;
+}
+
+#menu-container{
+    display:flex;
+    position:relative;
+    margin-top:20px;
+}
+
+#entree-container{
+    border-right:1px solid gray;
+}
+#side-container {
+    border-right: 1px solid gray;
+}
+
+@media(max-width:500px) /*When the window hits 500px in size, apply these styles.*/
+{
+    #menu-container{
+        flex-direction:column;
+    }
+
+    #entree-container {
+        border-right: none;
+    }
+
+    #side-container {
+        border-right: none;
+    }
+
+    #menu-search {
+       width:300px;
+    }
+}

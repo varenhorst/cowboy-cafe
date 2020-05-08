@@ -90,18 +90,19 @@ namespace CowboyCafe.Data
         /// <returns></returns>
         public static IEnumerable<IOrderItem> Search(IEnumerable<IOrderItem> orders, string s)
         {
-            List<IOrderItem> results = new List<IOrderItem>();
 
-            if (s == null) return orders;
-
-            foreach (IOrderItem order in orders)
+            if (s == null)
             {
-                if (order.ToString().Contains(s,StringComparison.InvariantCultureIgnoreCase))
-                {
-                    results.Add(order);
-                }
+                return orders;
             }
-            return results;
+
+            if(s != null)
+            {
+                orders = orders.Where(
+                    order => order.ToString() != null && order.ToString().Contains(s, StringComparison.CurrentCultureIgnoreCase)
+                );
+            }
+            return orders;
         }
 
         /// <summary>
@@ -112,20 +113,20 @@ namespace CowboyCafe.Data
         /// <returns></returns>
         public static IEnumerable<IOrderItem> FilterByCategory(IEnumerable<IOrderItem> orders, IEnumerable<string> menuCategories)
         {
-            List<IOrderItem> results = new List<IOrderItem>();
-            if (menuCategories == null || menuCategories.Count() == 0)
+            
+            if(menuCategories == null || menuCategories.Count() == 0)
             {
                 return orders;
             }
-            foreach(IOrderItem order in orders)
+
+            if(menuCategories != null && menuCategories.Count()!=0)
             {
-               if(order.OrderType != null && menuCategories.Contains(order.OrderType))
-                {
-                    results.Add(order);
-                }
+                orders = orders.Where(
+                    order => order.OrderType != null && OrderTypes.Contains(order.OrderType)
+                );
             }
 
-            return results;
+            return orders;
         }
 
         /// <summary>
@@ -138,39 +139,27 @@ namespace CowboyCafe.Data
         public static IEnumerable<IOrderItem> FilterByPrice(IEnumerable<IOrderItem> orders, double? max, double? min)
         {
             if (min == null && max == null) return orders;
+            
+            if(min!=null && max!=null)
+            {
+                orders = orders.Where(
+                    order => order.Price >= min && order.Price <= max
+                );
+            } 
+            else if(max == null && min!=null)
+            {
+                orders = orders.Where(
+                    order => order.Price >= min
+                );
+            }
+            else // max is null
+            {
+                orders = orders.Where(
+                    order => order.Price <= max
+                );
+            }
 
-            List<IOrderItem> results = new List<IOrderItem>();
-
-            if(max == null)
-            {
-                foreach(IOrderItem item in orders)
-                {
-                    if(item.Price >= min)
-                    {
-                        results.Add(item);
-                    }
-                }
-                return results;
-            }
-            if (min == null)
-            {
-                foreach (IOrderItem item in orders)
-                {
-                    if (item.Price <= max)
-                    {
-                        results.Add(item);
-                    }
-                }
-                return results;
-            }
-            foreach(IOrderItem item in orders)
-            {
-                if(item.Price >= min && item.Price <= max)
-                {
-                    results.Add(item);
-                }
-            }
-            return results;
+            return orders;
         }
 
         /// <summary>
@@ -182,43 +171,30 @@ namespace CowboyCafe.Data
         /// <returns></returns>
         public static IEnumerable<IOrderItem> FilterByCalories(IEnumerable<IOrderItem> orders, double? max, double? min)
         {
-            List<IOrderItem> results = new List<IOrderItem>();
-            if (min == null && max == null)
+            if(max == null && min == null)
             {
                 return orders;
             }
 
-            if (max == null)
+            if (min != null && max != null)
             {
-                foreach (IOrderItem item in orders)
-                {
-                    if (item.Calories >= min)
-                    {
-                        results.Add(item);
-                    }
-                }
-                return results;
+                orders = orders.Where(
+                    order => order.Calories >= min && order.Calories <= max
+                );
             }
-            if (min == null)
+            else if(max == null && min != null)
             {
-                foreach (IOrderItem item in orders)
-                {
-                    if (item.Calories <= max)
-                    {
-                        results.Add(item);
-                    }
-                }
-                return results;
+                orders = orders.Where(
+                    order => order.Calories >= min
+                );
             }
-
-            foreach (IOrderItem item in orders)
+            else // min is null
             {
-                if (item.Calories >= min && item.Calories <= max)
-                {
-                    results.Add(item);
-                }
+                orders = orders.Where(
+                    order=> order.Calories <= max
+                    );
             }
-            return results;
+            return orders;
         }
 
         public static IEnumerable<IOrderItem> Entrees => AllEntrees();
